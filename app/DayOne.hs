@@ -40,10 +40,9 @@ runLengthEncode z = (NonEmpty.head z, NonEmpty.length z)
 similarity :: NonEmpty.NonEmpty (Int, Int) -> Int -> Int
 similarity dict val = maybe 0 (*val) (nonEmptyLookup val dict)
 
+
 nonEmptyLookup :: Eq a => a -> NonEmpty.NonEmpty (a, b) -> Maybe b
 nonEmptyLookup v d = List.lookup v (NonEmpty.toList d)
-
-
 
 
 part1 :: NonEmpty.NonEmpty (Int, Int) -> Int
@@ -51,8 +50,6 @@ part1 pairs =
   let sortedPairs = sortPairs pairs
       differences = NonEmpty.map (abs . uncurry (-)) sortedPairs
   in sum differences
-
-
 
 
 part2 :: NonEmpty.NonEmpty (Int, Int) -> Int
